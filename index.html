@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,224 +11,118 @@
   <style>
     * { box-sizing: border-box; }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
       background: #fff8f2;
+      font-family: Arial, sans-serif;
       color: #604a50;
-      text-align: center;
     }
 
     main {
       width: 100%;
       max-width: 650px;
       margin: auto;
-      padding: 12px;
     }
 
     .convite {
       position: relative;
       width: 100%;
-      height: 0;
-      padding-top: 177.7778%;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px #00000018;
     }
 
-    .convite iframe {
-      position: absolute;
-      inset: 0;
+    .arte {
+      display: block;
       width: 100%;
-      height: 100%;
-      border: 0;
+      height: auto;
     }
 
-    h1 {
-      font-size: 1.6rem;
-      margin-top: 28px;
-    }
-
-    p { line-height: 1.5; }
-
-    .contador {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 20px 0;
-    }
-
-    .tempo {
-      background: #ffffff;
-      border: 1px solid #efd8d5;
-      border-radius: 12px;
-      padding: 12px 8px;
-      min-width: 68px;
-    }
-
-    .tempo strong {
+    .area-clique {
+      position: absolute;
       display: block;
-      font-size: 1.5rem;
-    }
-
-    .tempo span { font-size: .8rem; }
-
-    .botoes {
-      display: grid;
-      gap: 12px;
-      margin: 24px 0;
-    }
-
-    .botao {
-      display: block;
-      padding: 15px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: bold;
-      background: #dba9b5;
-      color: #402d34;
+      background: transparent;
       border: 0;
+      padding: 0;
       cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .botao:focus-visible {
-      outline: 3px solid #604a50;
-      outline-offset: 3px;
+    .area-clique:focus-visible {
+      outline: 2px dashed #604a50;
     }
 
     .musica {
-      background: #ffffff;
-      padding: 18px;
-      border-radius: 14px;
-      margin: 20px 0;
+      padding: 20px;
+      text-align: center;
     }
 
-    audio { width: 100%; }
-
-    footer {
-      padding: 20px 0;
-      font-size: .85rem;
+    audio {
+      width: 100%;
     }
   </style>
 </head>
 
 <body>
   <main>
-    <!-- CONVITE DO CANVA -->
-    <section class="convite" aria-label="Convite de aniversário">
-      <iframe
-        src="https://www.canva.com/design/DAHYagAzJm4/Q_zbvlM1-LOQOQzbceUCbA/view?embed"
-        title="Convite de 15 anos"
-        loading="lazy"
-        allowfullscreen>
-      </iframe>
+    <section class="convite" id="convite"
+             aria-label="Convite interativo de 15 anos">
+
+      <img
+        class="arte"
+        src="convite.png"
+        alt="Convite de aniversário de 15 anos"
+      >
+
+      <!-- BOTÃO SUGESTÃO DE PRESENTES -->
+      <button
+        class="area-clique"
+        aria-label="Ir para sugestão de presentes"
+        style="left: 5%; top: 5%; width: 40%; height: 2%;"
+        onclick="irParaParte(85)">
+      </button>
+
+      <!-- BOTÃO DRESS CODE -->
+      <button
+        class="area-clique"
+        aria-label="Ir para dress code"
+        style="left: 50%; top: 5%; width: 40%; height: 2%;"
+        onclick="irParaParte(93)">
+      </button>
+
+      <!-- ADICIONE OUTRAS ÁREAS CLICÁVEIS AQUI -->
+
     </section>
 
-    <!-- CONTAGEM REGRESSIVA -->
-    <section>
-      <h1>Estamos te esperando! ✨</h1>
-      <p>Falta pouco para esse dia especial.</p>
-
-      <div class="contador" aria-live="polite">
-        <div class="tempo"><strong id="dias">--</strong><span>Dias</span></div>
-        <div class="tempo"><strong id="horas">--</strong><span>Horas</span></div>
-        <div class="tempo"><strong id="minutos">--</strong><span>Minutos</span></div>
-        <div class="tempo"><strong id="segundos">--</strong><span>Segundos</span></div>
-      </div>
-
-      <p id="mensagem-contador"></p>
-    </section>
-
-    <!-- BOTÕES INTERATIVOS -->
-    <section class="botoes" aria-label="Informações da festa">
-      <a class="botao" id="whatsapp" href="#" target="_blank"
-         rel="noopener">💌 Confirmar presença</a>
-
-      <a class="botao" id="mapa" href="#" target="_blank"
-         rel="noopener">📍 Ver localização</a>
-
-      <a class="botao" id="presentes" href="#" target="_blank"
-         rel="noopener">🎁 Lista de presentes</a>
-    </section>
-
-    <!-- MÚSICA -->
+    <!-- ÁUDIO OPCIONAL -->
     <section class="musica">
-      <h2>Uma música para esse momento 🎵</h2>
-      <p>Toque no play para ouvir.</p>
+      <p>Uma música para esse momento 🎵</p>
       <audio controls preload="none">
         <source src="musica.mp3" type="audio/mpeg">
         Seu navegador não consegue reproduzir este áudio.
       </audio>
     </section>
-
-    <footer>Feito com carinho 💕</footer>
   </main>
 
   <script>
     /*
-      PREENCHA OS DADOS DA FESTA AQUI.
-      Use o formato indicado nos exemplos.
+      O número indica a porcentagem da altura da imagem.
+      Exemplo: 85 significa 85% da altura do convite.
     */
+    function irParaParte(percentual) {
+      const convite = document.getElementById("convite");
+      const altura = convite.getBoundingClientRect().height;
+      const inicio = window.scrollY +
+        convite.getBoundingClientRect().top;
 
-    const dataFesta = "2027-01-15T19:00:00-03:00";
-    const telefoneWhatsApp = "5511999999999";
-    const mensagemWhatsApp =
-      "Olá! Confirmo minha presença na festa de 15 anos!";
+      const destino = inicio + altura * (percentual / 100);
 
-    const enderecoFesta = "COLOQUE O ENDEREÇO DA FESTA AQUI";
-    const linkListaPresentes = "COLOQUE O LINK DA LISTA DE PRESENTES AQUI";
-
-    // Monta os links dos botões
-    document.getElementById("whatsapp").href =
-      "https://wa.me/" + telefoneWhatsApp +
-      "?text=" + encodeURIComponent(mensagemWhatsApp);
-
-    document.getElementById("mapa").href =
-      "https://www.google.com/maps/search/?api=1&query=" +
-      encodeURIComponent(enderecoFesta);
-
-    document.getElementById("presentes").href =
-      linkListaPresentes;
-
-    // Atualiza a contagem regressiva
-    const destino = new Date(dataFesta).getTime();
-
-    function atualizarContagem() {
-      const agora = Date.now();
-      const diferenca = destino - agora;
-
-      if (Number.isNaN(destino)) {
-        document.getElementById("mensagem-contador").textContent =
-          "Confira a data da festa.";
-        return;
-      }
-
-      if (diferenca <= 0) {
-        ["dias", "horas", "minutos", "segundos"].forEach(id => {
-          document.getElementById(id).textContent = "0";
-        });
-
-        document.getElementById("mensagem-contador").textContent =
-          "Chegou o grande dia! 🎉";
-        return;
-      }
-
-      const dia = Math.floor(diferenca / 86400000);
-      const hora = Math.floor((diferenca % 86400000) / 3600000);
-      const minuto = Math.floor((diferenca % 3600000) / 60000);
-      const segundo = Math.floor((diferenca % 60000) / 1000);
-
-      document.getElementById("dias").textContent = dia;
-      document.getElementById("horas").textContent = hora;
-      document.getElementById("minutos").textContent = minuto;
-      document.getElementById("segundos").textContent = segundo;
-      document.getElementById("mensagem-contador").textContent = "";
+      window.scrollTo({
+        top: destino,
+        behavior: "smooth"
+      });
     }
-
-    atualizarContagem();
-    setInterval(atualizarContagem, 1000);
   </script>
 </body>
 </html>
