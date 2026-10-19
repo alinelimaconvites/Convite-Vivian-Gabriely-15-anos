@@ -46,6 +46,15 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    /* Botão de Música / Play (Canto Superior Direito) */
+    .btn-musica {
+      right: 7.5%;
+      top: 1.5%;
+      width: 15%;
+      height: 1.8%;
+      border-radius: 50%;
+    }
+
     /* Botões Principais */
     .btn-principal {
       left: 12%;
@@ -58,7 +67,7 @@
     .dresscode   { top: 55.8%; }
     .confirmacao { top: 59.4%; }
 
-    /* Contagem Regressiva (Relógio + Texto "Clique aqui") */
+    /* Contagem Regressiva */
     .contagem {
       left: 15%;
       top: 63.2%;
@@ -72,13 +81,11 @@
       height: 1.5%;
     }
 
-    /* Primeira seta (canto esquerdo, abaixo do Dress Code) */
     .topo-dresscode {
       left: 4%;
       top: 83.3%;
     }
 
-    /* Segunda seta (canto direito, no final da página) */
     .topo-presentes {
       right: 4%;
       top: 98.2%;
@@ -102,6 +109,16 @@
   <main class="convite" id="topo">
 
     <img src="convite.png" alt="Convite de 15 anos - Vivian Gabriely">
+
+    <!-- Áudio da Música (Substitua 'musica.mp3' pelo caminho do seu arquivo de áudio) -->
+    <audio id="musica-convite" src="musica.mp3" preload="auto" loop></audio>
+
+    <!-- 0. Botão Aperte o Play / Pausar Música -->
+    <button
+      class="area-clique btn-musica"
+      onclick="alternarMusica()"
+      aria-label="Tocar ou pausar música"
+    ></button>
 
     <!-- Destinos das âncoras internas -->
     <span class="destino" id="destino-dresscode"></span>
@@ -142,7 +159,7 @@
     <!-- 5. Contagem Regressiva -->
     <a
       class="area-clique contagem"
-      href="https://onlinealarmkur.com/countdown/pt/#2026-11-28T16%3A00%26tz%3DAmerica%2FRecife%26title%3D15%2520Anos%2520de%2520Vivian%2520Gabriely"
+      href="SEU_LINK_DA_CONTAGEM_AQUI"
       target="_blank"
       rel="noopener"
       aria-label="Acompanhe a contagem regressiva"
@@ -163,5 +180,16 @@
     ></a>
 
   </main>
+
+  <script>
+    function alternarMusica() {
+      const audio = document.getElementById('musica-convite');
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+  </script>
 </body>
 </html>
