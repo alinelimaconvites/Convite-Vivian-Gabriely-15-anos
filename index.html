@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -18,7 +17,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: #fff8f2;
+      background: #020b26;
     }
 
     .convite {
@@ -35,14 +34,14 @@
       height: auto;
     }
 
-    /* Áreas transparentes sobre os botões originais */
+    /* Estilo genérico das áreas clicáveis */
     .area-clique {
       position: absolute;
       display: block;
       z-index: 10;
-      left: 10%;
-      width: 80%;
-      height: 1.8%;
+      left: 12%;
+      width: 76%;
+      height: 2.6%;
       background: transparent;
       border: none;
       padding: 0;
@@ -50,47 +49,45 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /*
-      POSIÇÕES PROVISÓRIAS.
-      Os valores são relativos à altura TOTAL da imagem.
-      Precisam coincidir com os botões desenhados.
+    /* 
+      POSIÇÕES AJUSTADAS COM BASE NA IMAGEM:
     */
+    /* 1. Local da Festa */
     .localizacao {
-      top: 5%;
+      top: 48.8%;
     }
 
+    /* 2. Sugestão de Presentes */
     .presentes {
-      top: 8%;
+      top: 52.4%;
     }
 
+    /* 3. Dress Code */
     .dresscode {
-      top: 11%;
+      top: 55.8%;
     }
 
+    /* 4. Confirme sua Presença */
     .confirmacao {
-      top: 14%;
+      top: 59.4%;
     }
 
-    /* Destinos invisíveis dentro da própria imagem */
+    /* Destinos invisíveis para a rolagem da página */
     .destino {
       position: absolute;
       left: 0;
       width: 1px;
       height: 1px;
-      scroll-margin-top: 12px;
+      scroll-margin-top: 20px;
     }
 
-    /*
-      POSIÇÕES PROVISÓRIAS DOS DESTINOS.
-      Ajustar para a altura em que cada informação
-      aparece no final da imagem.
-    */
-    #destino-presentes {
-      top: 82%;
-    }
-
+    /* Posições das seções de destino no final da imagem */
     #destino-dresscode {
-      top: 90%;
+      top: 71.5%;
+    }
+
+    #destino-presentes {
+      top: 87.0%;
     }
   </style>
 </head>
@@ -98,29 +95,29 @@
 <body>
   <main class="convite" id="topo">
 
-    <img src="convite.png" alt="Convite de 15 anos">
+    <img src="convite.png" alt="Convite de 15 anos - Vivian Gabriely">
 
-    <!-- Destinos invisíveis: não acrescentam conteúdo visual -->
-    <span class="destino" id="destino-presentes"></span>
+    <!-- Destinos das âncoras internas -->
     <span class="destino" id="destino-dresscode"></span>
+    <span class="destino" id="destino-presentes"></span>
 
-    <!-- 1. Localização -->
+    <!-- 1. Localização (Abre Google Maps) -->
     <a
       class="area-clique localizacao"
       href="https://www.google.com/maps/place/R.+da+Felicidade,+616+-+Alto+Nova+Olinda,+Olinda+-+PE,+53200-240/@-7.989263,-34.8893531,16z/data=!4m6!3m5!1s0x7ab1778661d1783:0x83fef0c84294fc66!8m2!3d-7.989263!4d-34.8893531!16s%2Fg%2F11ybly0gv_?g_ep=Eg1tbF8yMDI2MTAxM18wIJvbDyoASAJQAg%3D%3D"
       target="_blank"
       rel="noopener"
-      aria-label="Localização"
+      aria-label="Local da Festa"
     ></a>
 
-    <!-- 2. Sugestão de presentes -->
+    <!-- 2. Sugestão de presentes (Rola para a seção de presentes) -->
     <a
       class="area-clique presentes"
       href="#destino-presentes"
       aria-label="Sugestão de presentes"
     ></a>
 
-    <!-- 3. Dress code -->
+    <!-- 3. Dress code (Rola para a seção de dress code) -->
     <a
       class="area-clique dresscode"
       href="#destino-dresscode"
