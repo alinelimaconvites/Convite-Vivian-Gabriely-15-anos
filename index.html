@@ -39,9 +39,6 @@
       position: absolute;
       display: block;
       z-index: 10;
-      left: 12%;
-      width: 76%;
-      height: 2.6%;
       background: transparent;
       border: none;
       padding: 0;
@@ -49,30 +46,45 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* 
-      POSIÇÕES AJUSTADAS COM BASE NA IMAGEM:
-    */
-    /* 1. Local da Festa */
-    .localizacao {
-      top: 48.8%;
+    /* Botões Principais */
+    .btn-principal {
+      left: 12%;
+      width: 76%;
+      height: 2.6%;
     }
 
-    /* 2. Sugestão de Presentes */
-    .presentes {
-      top: 52.4%;
+    .localizacao { top: 48.8%; }
+    .presentes   { top: 52.4%; }
+    .dresscode   { top: 55.8%; }
+    .confirmacao { top: 59.4%; }
+
+    /* Contagem Regressiva (Relógio + Texto "Clique aqui") */
+    .contagem {
+      left: 15%;
+      top: 63.2%;
+      width: 70%;
+      height: 3.2%;
     }
 
-    /* 3. Dress Code */
-    .dresscode {
-      top: 55.8%;
+    /* Botões "Voltar ao Topo" (Setas) */
+    .topo-seta {
+      width: 10%;
+      height: 1.5%;
     }
 
-    /* 4. Confirme sua Presença */
-    .confirmacao {
-      top: 59.4%;
+    /* Primeira seta (canto esquerdo, abaixo do Dress Code) */
+    .topo-dresscode {
+      left: 4%;
+      top: 83.3%;
     }
 
-    /* Destinos invisíveis para a rolagem da página */
+    /* Segunda seta (canto direito, no final da página) */
+    .topo-presentes {
+      right: 4%;
+      top: 98.2%;
+    }
+
+    /* Destinos invisíveis para a rolagem interna */
     .destino {
       position: absolute;
       left: 0;
@@ -81,14 +93,8 @@
       scroll-margin-top: 20px;
     }
 
-    /* Posições das seções de destino no final da imagem */
-    #destino-dresscode {
-      top: 71.5%;
-    }
-
-    #destino-presentes {
-      top: 87.0%;
-    }
+    #destino-dresscode { top: 70.8%; }
+    #destino-presentes { top: 85.5%; }
   </style>
 </head>
 
@@ -103,34 +109,57 @@
 
     <!-- 1. Localização (Abre Google Maps) -->
     <a
-      class="area-clique localizacao"
+      class="area-clique btn-principal localizacao"
       href="https://www.google.com/maps/place/R.+da+Felicidade,+616+-+Alto+Nova+Olinda,+Olinda+-+PE,+53200-240/@-7.989263,-34.8893531,16z/data=!4m6!3m5!1s0x7ab1778661d1783:0x83fef0c84294fc66!8m2!3d-7.989263!4d-34.8893531!16s%2Fg%2F11ybly0gv_?g_ep=Eg1tbF8yMDI2MTAxM18wIJvbDyoASAJQAg%3D%3D"
       target="_blank"
       rel="noopener"
       aria-label="Local da Festa"
     ></a>
 
-    <!-- 2. Sugestão de presentes (Rola para a seção de presentes) -->
+    <!-- 2. Sugestão de presentes -->
     <a
-      class="area-clique presentes"
+      class="area-clique btn-principal presentes"
       href="#destino-presentes"
       aria-label="Sugestão de presentes"
     ></a>
 
-    <!-- 3. Dress code (Rola para a seção de dress code) -->
+    <!-- 3. Dress code -->
     <a
-      class="area-clique dresscode"
+      class="area-clique btn-principal dresscode"
       href="#destino-dresscode"
       aria-label="Dress code"
     ></a>
 
     <!-- 4. Confirmação pelo WhatsApp -->
     <a
-      class="area-clique confirmacao"
+      class="area-clique btn-principal confirmacao"
       href="https://wa.me/5581984080642?text=Confirmo%20minha%20presen%C3%A7a!"
       target="_blank"
       rel="noopener"
       aria-label="Confirmar presença"
+    ></a>
+
+    <!-- 5. Contagem Regressiva -->
+    <a
+      class="area-clique contagem"
+      href="SEU_LINK_DA_CONTAGEM_AQUI"
+      target="_blank"
+      rel="noopener"
+      aria-label="Acompanhe a contagem regressiva"
+    ></a>
+
+    <!-- 6. Voltar ao Topo 1 (Seta do Dress Code) -->
+    <a
+      class="area-clique topo-seta topo-dresscode"
+      href="#topo"
+      aria-label="Voltar ao topo"
+    ></a>
+
+    <!-- 7. Voltar ao Topo 2 (Seta do Rodapé/Presentes) -->
+    <a
+      class="area-clique topo-seta topo-presentes"
+      href="#topo"
+      aria-label="Voltar ao topo"
     ></a>
 
   </main>
