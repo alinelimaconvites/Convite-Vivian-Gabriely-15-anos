@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fff8f2">
   <title>Convite de 15 anos</title>
 
   <style>
@@ -18,9 +17,8 @@
 
     body {
       margin: 0;
+      padding: 0;
       background: #fff8f2;
-      color: #333;
-      font-family: Arial, sans-serif;
     }
 
     .convite {
@@ -31,31 +29,31 @@
       line-height: 0;
     }
 
-    .convite-img {
+    .convite img {
       display: block;
       width: 100%;
       height: auto;
     }
 
-    /* Áreas transparentes sobre os botões da imagem */
+    /* Áreas transparentes sobre os botões originais */
     .area-clique {
       position: absolute;
       display: block;
-      z-index: 5;
+      z-index: 10;
       left: 10%;
       width: 80%;
       height: 1.8%;
-      padding: 0;
-      border: 0;
       background: transparent;
+      border: none;
+      padding: 0;
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
     }
 
     /*
-      POSIÇÕES INICIAIS:
-      Altere os valores "top" para encaixar nos botões.
-      Os valores são porcentagens da ALTURA TOTAL da imagem.
+      POSIÇÕES PROVISÓRIAS.
+      Os valores são relativos à altura TOTAL da imagem.
+      Precisam coincidir com os botões desenhados.
     */
     .localizacao {
       top: 5%;
@@ -73,211 +71,71 @@
       top: 14%;
     }
 
-    .area-clique:focus-visible {
-      outline: 2px dashed #3454a1;
-      outline-offset: 2px;
+    /* Destinos invisíveis dentro da própria imagem */
+    .destino {
+      position: absolute;
+      left: 0;
+      width: 1px;
+      height: 1px;
+      scroll-margin-top: 12px;
     }
 
-    .conteudo-final {
-      width: 100%;
-      max-width: 650px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
-      line-height: 1.5;
+    /*
+      POSIÇÕES PROVISÓRIAS DOS DESTINOS.
+      Ajustar para a altura em que cada informação
+      aparece no final da imagem.
+    */
+    #destino-presentes {
+      top: 82%;
     }
 
-    .secao {
-      margin: 22px 0;
-      padding: 24px 16px;
-      background: #fff;
-      border-radius: 16px;
-      scroll-margin-top: 18px;
-    }
-
-    .secao h2 {
-      margin-top: 0;
-    }
-
-    .botao {
-      display: inline-block;
-      padding: 12px 20px;
-      margin: 8px 0;
-      border-radius: 25px;
-      background: #3454a1;
-      color: white;
-      text-decoration: none;
-    }
-
-    .observacao {
-      color: #666;
-      font-size: 14px;
-    }
-
-    audio {
-      width: 100%;
-      margin-top: 10px;
+    #destino-dresscode {
+      top: 90%;
     }
   </style>
 </head>
 
 <body>
+  <main class="convite" id="topo">
 
-  <main>
-    <div class="convite">
+    <img src="convite.png" alt="Convite de 15 anos">
 
-      <!-- A imagem precisa estar na mesma pasta deste arquivo -->
-      <img
-        class="convite-img"
-        src="convite.png"
-        alt="Convite de aniversário de 15 anos"
-      >
+    <!-- Destinos invisíveis: não acrescentam conteúdo visual -->
+    <span class="destino" id="destino-presentes"></span>
+    <span class="destino" id="destino-dresscode"></span>
 
-      <!-- 1. Localização: abre o mapa -->
-      <a
-        class="area-clique localizacao"
-        href="COLE_AQUI_O_LINK_DO_MAPA"
-        target="_blank"
-        rel="noopener"
-        aria-label="Abrir localização da festa"
-      ></a>
+    <!-- 1. Localização -->
+    <a
+      class="area-clique localizacao"
+      href="https://www.google.com/maps/place/R.+da+Felicidade,+616+-+Alto+Nova+Olinda,+Olinda+-+PE,+53200-240/@-7.989263,-34.8893531,16z/data=!4m6!3m5!1s0x7ab1778661d1783:0x83fef0c84294fc66!8m2!3d-7.989263!4d-34.8893531!16s%2Fg%2F11ybly0gv_?g_ep=Eg1tbF8yMDI2MTAxM18wIJvbDyoASAJQAg%3D%3D"
+      target="_blank"
+      rel="noopener"
+      aria-label="Localização"
+    ></a>
 
-      <!-- 2. Presentes: rola até a seção no final -->
-      <a
-        class="area-clique presentes"
-        href="#presentes"
-        aria-label="Ver sugestão de presentes"
-      ></a>
+    <!-- 2. Sugestão de presentes -->
+    <a
+      class="area-clique presentes"
+      href="#destino-presentes"
+      aria-label="Sugestão de presentes"
+    ></a>
 
-      <!-- 3. Dress code: rola até a seção no final -->
-      <a
-        class="area-clique dresscode"
-        href="#dresscode"
-        aria-label="Ver dress code"
-      ></a>
+    <!-- 3. Dress code -->
+    <a
+      class="area-clique dresscode"
+      href="#destino-dresscode"
+      aria-label="Dress code"
+    ></a>
 
-      <!-- 4. Confirmação: abre WhatsApp -->
-      <a
-        class="area-clique confirmacao"
-        href="https://wa.me/5581984080642?text=Confirmo%20minha%20presen%C3%A7a!"
-        target="_blank"
-        rel="noopener"
-        aria-label="Confirmar presença pelo WhatsApp"
-      ></a>
+    <!-- 4. Confirmação pelo WhatsApp -->
+    <a
+      class="area-clique confirmacao"
+      href="https://wa.me/5581984080642?text=Confirmo%20minha%20presen%C3%A7a!"
+      target="_blank"
+      rel="noopener"
+      aria-label="Confirmar presença"
+    ></a>
 
-    </div>
-
-    <!-- Conteúdo ao final do convite -->
-    <section class="conteudo-final">
-
-      <div class="secao" id="presentes">
-        <h2>🎁 Sugestão de presentes</h2>
-        <p>Confira aqui as sugestões de presentes.</p>
-
-        <!-- Substitua pelo conteúdo real da lista -->
-        <p class="observacao">
-          Adicione aqui as opções de presentes desejadas.
-        </p>
-
-        <a class="botao" href="#topo"
-           onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
-          Voltar ao convite
-        </a>
-      </div>
-
-      <div class="secao" id="dresscode">
-        <h2>👗 Dress code</h2>
-        <p>Confira aqui as orientações de traje para a festa.</p>
-
-        <!-- Substitua pelo dress code real -->
-        <p class="observacao">
-          Adicione aqui as cores ou os trajes recomendados.
-        </p>
-
-        <a class="botao" href="#topo"
-           onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
-          Voltar ao convite
-        </a>
-      </div>
-
-      <div class="secao" id="contador-secao">
-        <h2>✨ Estamos te esperando!</h2>
-        <p>Falta pouco para o grande dia!</p>
-        <p id="contador" aria-live="polite"></p>
-      </div>
-
-      <div class="secao" id="localizacao-final">
-        <h2>📍 Localização</h2>
-        <p>Consulte o endereço da festa no mapa.</p>
-        <a
-          class="botao"
-          href="COLE_AQUI_O_LINK_DO_MAPA"
-          target="_blank"
-          rel="noopener"
-        >
-          Abrir mapa
-        </a>
-      </div>
-
-      <div class="secao" id="confirmacao-final">
-        <h2>💌 Confirme sua presença</h2>
-        <a
-          class="botao"
-          href="https://wa.me/5581984080642?text=Confirmo%20minha%20presen%C3%A7a!"
-          target="_blank"
-          rel="noopener"
-        >
-          Confirmar pelo WhatsApp
-        </a>
-      </div>
-
-      <div class="secao" id="musica">
-        <h2>🎶 Música</h2>
-        <p class="observacao">
-          Toque para iniciar a música.
-        </p>
-        <audio controls loop preload="none">
-          <source src="musica.mp3" type="audio/mpeg">
-          Seu navegador não suporta áudio.
-        </audio>
-      </div>
-
-    </section>
   </main>
-
-  <script>
-    // Data e hora da festa
-const dataFesta = new Date("2026-11-28T16:00:00-03:00");
-
-    function atualizarContador() {
-      const agora = new Date();
-      const diferenca = dataFesta.getTime() - agora.getTime();
-      const elemento = document.getElementById("contador");
-
-      if (diferenca <= 0) {
-        elemento.textContent = "Chegou o grande dia! 🎉";
-        return;
-      }
-
-      const dias = Math.floor(diferenca / 86400000);
-      const horas = Math.floor(
-        (diferenca % 86400000) / 3600000
-      );
-      const minutos = Math.floor(
-        (diferenca % 3600000) / 60000
-      );
-      const segundos = Math.floor(
-        (diferenca % 60000) / 1000
-      );
-
-      elemento.textContent =
-        `${dias} dias, ${horas} horas, ` +
-        `${minutos} minutos e ${segundos} segundos`;
-    }
-
-    atualizarContador();
-    setInterval(atualizarContador, 1000);
-  </script>
-
 </body>
 </html>
