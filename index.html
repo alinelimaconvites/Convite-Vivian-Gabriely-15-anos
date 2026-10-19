@@ -46,13 +46,18 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Botão de Música / Play (Canto Superior Direito) */
+    /* 
+      BOTÃO REDONDO DE PLAY (MÚSICA)
+      Ajustado para focar exatamente no círculo do ícone.
+      REMOVA a linha 'border' abaixo após testar a posição!
+    */
     .btn-musica {
-      right: 7.5%;
-      top: 1.5%;
-      width: 15%;
-      height: 1.8%;
+      right: 6%;
+      top: 3.5%;
+      width: 12%;
+      height: 1.4%;
       border-radius: 50%;
+      border: 2px solid red; /* TESTE VISUAL: Apague esta linha depois! */
     }
 
     /* Botões Principais */
@@ -110,10 +115,10 @@
 
     <img src="convite.png" alt="Convite de 15 anos - Vivian Gabriely">
 
-    <!-- Áudio da Música (Substitua 'musica.mp3' pelo caminho do seu arquivo de áudio) -->
+    <!-- Áudio da Música (Certifique-se de que o arquivo 'musica.mp3' está na mesma pasta!) -->
     <audio id="musica-convite" src="musica.mp3" preload="auto" loop></audio>
 
-    <!-- 0. Botão Aperte o Play / Pausar Música -->
+    <!-- 0. Botão Redondo Aperte o Play -->
     <button
       class="area-clique btn-musica"
       onclick="alternarMusica()"
@@ -124,7 +129,7 @@
     <span class="destino" id="destino-dresscode"></span>
     <span class="destino" id="destino-presentes"></span>
 
-    <!-- 1. Localização (Abre Google Maps) -->
+    <!-- 1. Localização -->
     <a
       class="area-clique btn-principal localizacao"
       href="https://www.google.com/maps/place/R.+da+Felicidade,+616+-+Alto+Nova+Olinda,+Olinda+-+PE,+53200-240/@-7.989263,-34.8893531,16z/data=!4m6!3m5!1s0x7ab1778661d1783:0x83fef0c84294fc66!8m2!3d-7.989263!4d-34.8893531!16s%2Fg%2F11ybly0gv_?g_ep=Eg1tbF8yMDI2MTAxM18wIJvbDyoASAJQAg%3D%3D"
@@ -165,14 +170,14 @@
       aria-label="Acompanhe a contagem regressiva"
     ></a>
 
-    <!-- 6. Voltar ao Topo 1 (Seta do Dress Code) -->
+    <!-- 6. Voltar ao Topo 1 -->
     <a
       class="area-clique topo-seta topo-dresscode"
       href="#topo"
       aria-label="Voltar ao topo"
     ></a>
 
-    <!-- 7. Voltar ao Topo 2 (Seta do Rodapé/Presentes) -->
+    <!-- 7. Voltar ao Topo 2 -->
     <a
       class="area-clique topo-seta topo-presentes"
       href="#topo"
@@ -185,7 +190,10 @@
     function alternarMusica() {
       const audio = document.getElementById('musica-convite');
       if (audio.paused) {
-        audio.play();
+        audio.play().catch(error => {
+          console.error("Erro ao tocar música:", error);
+          alert("Não foi possível tocar o áudio. Verifique se o arquivo 'musica.mp3' está salvo na mesma pasta do arquivo HTML!");
+        });
       } else {
         audio.pause();
       }
