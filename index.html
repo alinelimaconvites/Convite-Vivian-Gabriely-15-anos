@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,7 +8,9 @@
   <title>Convite de 15 anos</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     html {
       scroll-behavior: smooth;
@@ -18,111 +19,265 @@
     body {
       margin: 0;
       background: #fff8f2;
+      color: #333;
       font-family: Arial, sans-serif;
-      color: #604a50;
-    }
-
-    main {
-      width: 100%;
-      max-width: 650px;
-      margin: auto;
     }
 
     .convite {
       position: relative;
       width: 100%;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 0;
     }
 
-    .arte {
+    .convite-img {
       display: block;
       width: 100%;
       height: auto;
     }
 
+    /* Áreas transparentes sobre os botões da imagem */
     .area-clique {
       position: absolute;
       display: block;
-      background: transparent;
-      border: 0;
+      z-index: 5;
+      left: 10%;
+      width: 80%;
+      height: 1.8%;
       padding: 0;
+      border: 0;
+      background: transparent;
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
     }
 
-    .area-clique:focus-visible {
-      outline: 2px dashed #604a50;
+    /*
+      POSIÇÕES INICIAIS:
+      Altere os valores "top" para encaixar nos botões.
+      Os valores são porcentagens da ALTURA TOTAL da imagem.
+    */
+    .localizacao {
+      top: 5%;
     }
 
-    .musica {
+    .presentes {
+      top: 8%;
+    }
+
+    .dresscode {
+      top: 11%;
+    }
+
+    .confirmacao {
+      top: 14%;
+    }
+
+    .area-clique:focus-visible {
+      outline: 2px dashed #3454a1;
+      outline-offset: 2px;
+    }
+
+    .conteudo-final {
+      width: 100%;
+      max-width: 650px;
+      margin: 0 auto;
       padding: 20px;
       text-align: center;
+      line-height: 1.5;
+    }
+
+    .secao {
+      margin: 22px 0;
+      padding: 24px 16px;
+      background: #fff;
+      border-radius: 16px;
+      scroll-margin-top: 18px;
+    }
+
+    .secao h2 {
+      margin-top: 0;
+    }
+
+    .botao {
+      display: inline-block;
+      padding: 12px 20px;
+      margin: 8px 0;
+      border-radius: 25px;
+      background: #3454a1;
+      color: white;
+      text-decoration: none;
+    }
+
+    .observacao {
+      color: #666;
+      font-size: 14px;
     }
 
     audio {
       width: 100%;
+      margin-top: 10px;
     }
   </style>
 </head>
 
 <body>
-  <main>
-    <section class="convite" id="convite"
-             aria-label="Convite interativo de 15 anos">
 
+  <main>
+    <div class="convite">
+
+      <!-- A imagem precisa estar na mesma pasta deste arquivo -->
       <img
-        class="arte"
+        class="convite-img"
         src="convite.png"
         alt="Convite de aniversário de 15 anos"
       >
 
-      <!-- BOTÃO SUGESTÃO DE PRESENTES -->
-      <button
-        class="area-clique"
-        aria-label="Ir para sugestão de presentes"
-        style="left: 5%; top: 5%; width: 40%; height: 2%;"
-        onclick="irParaParte(85)">
-      </button>
+      <!-- 1. Localização: abre o mapa -->
+      <a
+        class="area-clique localizacao"
+        href="COLE_AQUI_O_LINK_DO_MAPA"
+        target="_blank"
+        rel="noopener"
+        aria-label="Abrir localização da festa"
+      ></a>
 
-      <!-- BOTÃO DRESS CODE -->
-      <button
-        class="area-clique"
-        aria-label="Ir para dress code"
-        style="left: 50%; top: 5%; width: 40%; height: 2%;"
-        onclick="irParaParte(93)">
-      </button>
+      <!-- 2. Presentes: rola até a seção no final -->
+      <a
+        class="area-clique presentes"
+        href="#presentes"
+        aria-label="Ver sugestão de presentes"
+      ></a>
 
-      <!-- ADICIONE OUTRAS ÁREAS CLICÁVEIS AQUI -->
+      <!-- 3. Dress code: rola até a seção no final -->
+      <a
+        class="area-clique dresscode"
+        href="#dresscode"
+        aria-label="Ver dress code"
+      ></a>
 
-    </section>
+      <!-- 4. Confirmação: abre WhatsApp -->
+      <a
+        class="area-clique confirmacao"
+        href="https://wa.me/5581984080642?text=Confirmo%20minha%20presen%C3%A7a!"
+        target="_blank"
+        rel="noopener"
+        aria-label="Confirmar presença pelo WhatsApp"
+      ></a>
 
-    <!-- ÁUDIO OPCIONAL -->
-    <section class="musica">
-      <p>Uma música para esse momento 🎵</p>
-      <audio controls preload="none">
-        <source src="musica.mp3" type="audio/mpeg">
-        Seu navegador não consegue reproduzir este áudio.
-      </audio>
+    </div>
+
+    <!-- Conteúdo ao final do convite -->
+    <section class="conteudo-final">
+
+      <div class="secao" id="presentes">
+        <h2>🎁 Sugestão de presentes</h2>
+        <p>Confira aqui as sugestões de presentes.</p>
+
+        <!-- Substitua pelo conteúdo real da lista -->
+        <p class="observacao">
+          Adicione aqui as opções de presentes desejadas.
+        </p>
+
+        <a class="botao" href="#topo"
+           onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+          Voltar ao convite
+        </a>
+      </div>
+
+      <div class="secao" id="dresscode">
+        <h2>👗 Dress code</h2>
+        <p>Confira aqui as orientações de traje para a festa.</p>
+
+        <!-- Substitua pelo dress code real -->
+        <p class="observacao">
+          Adicione aqui as cores ou os trajes recomendados.
+        </p>
+
+        <a class="botao" href="#topo"
+           onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+          Voltar ao convite
+        </a>
+      </div>
+
+      <div class="secao" id="contador-secao">
+        <h2>✨ Estamos te esperando!</h2>
+        <p>Falta pouco para o grande dia!</p>
+        <p id="contador" aria-live="polite"></p>
+      </div>
+
+      <div class="secao" id="localizacao-final">
+        <h2>📍 Localização</h2>
+        <p>Consulte o endereço da festa no mapa.</p>
+        <a
+          class="botao"
+          href="COLE_AQUI_O_LINK_DO_MAPA"
+          target="_blank"
+          rel="noopener"
+        >
+          Abrir mapa
+        </a>
+      </div>
+
+      <div class="secao" id="confirmacao-final">
+        <h2>💌 Confirme sua presença</h2>
+        <a
+          class="botao"
+          href="https://wa.me/5581984080642?text=Confirmo%20minha%20presen%C3%A7a!"
+          target="_blank"
+          rel="noopener"
+        >
+          Confirmar pelo WhatsApp
+        </a>
+      </div>
+
+      <div class="secao" id="musica">
+        <h2>🎶 Música</h2>
+        <p class="observacao">
+          Toque para iniciar a música.
+        </p>
+        <audio controls loop preload="none">
+          <source src="musica.mp3" type="audio/mpeg">
+          Seu navegador não suporta áudio.
+        </audio>
+      </div>
+
     </section>
   </main>
 
   <script>
-    /*
-      O número indica a porcentagem da altura da imagem.
-      Exemplo: 85 significa 85% da altura do convite.
-    */
-    function irParaParte(percentual) {
-      const convite = document.getElementById("convite");
-      const altura = convite.getBoundingClientRect().height;
-      const inicio = window.scrollY +
-        convite.getBoundingClientRect().top;
+    // Data e hora da festa
+const dataFesta = new Date("2026-11-28T16:00:00-03:00");
 
-      const destino = inicio + altura * (percentual / 100);
+    function atualizarContador() {
+      const agora = new Date();
+      const diferenca = dataFesta.getTime() - agora.getTime();
+      const elemento = document.getElementById("contador");
 
-      window.scrollTo({
-        top: destino,
-        behavior: "smooth"
-      });
+      if (diferenca <= 0) {
+        elemento.textContent = "Chegou o grande dia! 🎉";
+        return;
+      }
+
+      const dias = Math.floor(diferenca / 86400000);
+      const horas = Math.floor(
+        (diferenca % 86400000) / 3600000
+      );
+      const minutos = Math.floor(
+        (diferenca % 3600000) / 60000
+      );
+      const segundos = Math.floor(
+        (diferenca % 60000) / 1000
+      );
+
+      elemento.textContent =
+        `${dias} dias, ${horas} horas, ` +
+        `${minutos} minutos e ${segundos} segundos`;
     }
+
+    atualizarContador();
+    setInterval(atualizarContador, 1000);
   </script>
+
 </body>
 </html>
